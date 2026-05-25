@@ -1,0 +1,456 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Questionnaire - The AI-Integrated Reinsurance Nexus</title>
+    <style>
+        :root {
+            --slate-900: #0f172a;
+            --slate-800: #1e293b;
+            --slate-700: #334155;
+            --slate-100: #f1f5f9;
+            --slate-50: #f8fafc;
+            --teal-600: #0d9488;
+            --teal-700: #0f766e;
+            --teal-50: #f0fdfa;
+            --emerald-600: #16a34a;
+            --rose-600: #dc2626;
+            --border-color: #cbd5e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--slate-50);
+            color: var(--slate-700);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .survey-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        /* NEW LIVE MONITORING BAR */
+        .live-tracker-bar {
+            background-color: var(--teal-50);
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .live-pulse {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            color: var(--teal-700);
+        }
+
+        .pulse-dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--emerald-600);
+            border-radius: 50%;
+            margin-right: 8px;
+            box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.7);
+            animation: pulse 1.6s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(22, 163, 74, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); }
+        }
+
+        .dashboard-link {
+            background-color: var(--slate-900);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 12.5px;
+            transition: background-color 0.2s ease;
+        }
+
+        .dashboard-link:hover {
+            background-color: var(--teal-600);
+        }
+
+        .survey-header {
+            background-color: var(--slate-900);
+            color: #ffffff;
+            padding: 30px;
+            text-align: center;
+            border-bottom: 5px solid var(--teal-600);
+        }
+
+        .survey-header h1 {
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+
+        .survey-header p {
+            color: var(--border-color);
+            font-size: 14px;
+        }
+
+        .survey-body {
+            padding: 40px 30px;
+        }
+
+        .section-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--slate-900);
+            border-left: 4px solid var(--teal-600);
+            padding-left: 10px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .letter-text {
+            font-size: 14.5px;
+            text-align: justify;
+            color: var(--slate-800);
+            margin-bottom: 15px;
+        }
+
+        .bullet-list {
+            margin-left: 20px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .bullet-list li { margin-bottom: 5px; }
+
+        .form-group { margin-bottom: 20px; }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 15px;
+            color: var(--slate-900);
+        }
+
+        .radio-label, .checkbox-label {
+            display: flex;
+            align-items: center;
+            font-weight: normal;
+            margin-bottom: 8px;
+            cursor: pointer;
+            font-size: 14.5px;
+        }
+
+        .radio-label input, .checkbox-label input {
+            margin-right: 10px;
+            width: 16px;
+            height: 16px;
+            accent-color: var(--teal-600);
+        }
+
+        .text-input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .matrix-table th {
+            background-color: var(--slate-100);
+            color: var(--slate-900);
+            font-weight: 600;
+            padding: 12px 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .matrix-table th.statement-col { text-align: left; width: 55%; }
+
+        .matrix-table td {
+            padding: 12px 10px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .matrix-table tr:nth-child(even) { background-color: var(--slate-50); }
+        .matrix-table tr:hover { background-color: var(--teal-50); }
+
+        .matrix-table input[type="radio"] {
+            width: 17px;
+            height: 17px;
+            cursor: pointer;
+            accent-color: var(--teal-600);
+        }
+
+        .legend-container {
+            display: flex;
+            justify-content: space-between;
+            background: var(--slate-100);
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 12.5px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 14px;
+            resize: vertical;
+        }
+
+        .submit-container { text-align: center; margin-top: 20px; }
+
+        .btn-submit {
+            background-color: var(--teal-600);
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .btn-submit:hover { background-color: var(--teal-700); }
+
+        @media (max-width: 768px) {
+            body { padding: 15px 10px; }
+            .survey-body { padding: 20px 15px; }
+            .matrix-table th, .matrix-table td { padding: 8px 4px; font-size: 12px; }
+            .live-tracker-bar { flex-direction: column; gap: 10px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="survey-container">
+        
+        <div class="live-tracker-bar">
+            <div class="live-pulse">
+                <div class="pulse-dot"></div>
+                <span>Live Response Logging Enabled</span>
+            </div>
+            <a href="https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID_HERE/edit?usp=sharing" target="_blank" class="dashboard-link">
+                📊 View Real-Time Responses Link
+            </a>
+        </div>
+
+        <div class="survey-header">
+            <h1>The AI-Integrated Reinsurance Nexus Framework</h1>
+            <p>Industry Operational Readiness & Macroeconomic Retention Survey</p>
+            <p style="margin-top: 8px; font-size: 12px; opacity: 0.8;">Academic Treatise | Blessing Madzoka (ID: N0231577K) | NUST</p>
+        </div>
+
+        <form class="survey-body" id="nexusSurvey">
+            
+            <div class="section-card">
+                <div class="section-title">Part I: Institutional Consent & Agreement</div>
+                <p class="letter-text">
+                    Dear Industry Professional / Regulatory Stakeholder,<br><br>
+                    You are invited to participate in a structural research study examining the channels of reinsurance capital flight in Zimbabwe and the operational feasibility of deploying an Artificial Intelligence (AI) Integrated Reinsurance Framework to scale internal retention capacity, insulate national foreign exchange reserves, and support the National Development Strategy 2 (NDS2).
+                </p>
+                <ul class="bullet-list">
+                    <li><strong>Anonymity:</strong> This system uses an anonymized dataset strategy. Your identity and company brand coordinates are fully secure.</li>
+                    <li><strong>Voluntary:</strong> You retain the explicit right to discontinue participation at any phase prior to submission.</li>
+                </ul>
+                <label class="checkbox-label" style="font-weight: bold; margin-top: 15px;">
+                    <input type="checkbox" name="consent" required> I have read the terms and explicitly give my consent to participate.
+                </label>
+            </div>
+
+            <div class="section-card">
+                <div class="section-title">Part II: Professional Demographic Profile</div>
+                
+                <div class="form-group">
+                    <label>1. Primary Institutional Cohort:</label>
+                    <label class="radio-label"><input type="radio" name="cohort" value="underwriter" required> Primary Insurance Underwriter / Corporate Risk Manager</label>
+                    <label class="radio-label"><input type="radio" name="cohort" value="reinsurer"> Reinsurance Broker / Specialist Underwriter / Actuary</label>
+                    <label class="radio-label"><input type="radio" name="cohort" value="insurtech"> Insurtech Developer / Financial Systems Architect / Blockchain Engineer</label>
+                    <label class="radio-label"><input type="radio" name="cohort" value="regulator"> Regulatory Official (IPEC / Ministry of Finance / RBZ)</label>
+                </div>
+
+                <div class="form-group">
+                    <label>2. Years of Professional Practice within the Financial/Risk Ecosystem:</label>
+                    <label class="radio-label"><input type="radio" name="experience" value="lt5" required> Less than 5 years</label>
+                    <label class="radio-label"><input type="radio" name="experience" value="5to10"> 5 to 10 years</label>
+                    <label class="radio-label"><input type="radio" name="experience" value="11to15"> 11 to 15 years</label>
+                    <label class="radio-label"><input type="radio" name="experience" value="gt15"> Above 15 years</label>
+                </div>
+            </div>
+
+            <div class="section-card">
+                <div class="section-title">Part III: Closed-Ended Structural Evaluation Matrix</div>
+                
+                <div class="legend-container">
+                    <span>1 = Strongly Disagree</span>
+                    <span>2 = Disagree</span>
+                    <span>3 = Neutral</span>
+                    <span>4 = Agree</span>
+                    <span>5 = Strongly Agree</span>
+                </div>
+
+                <h3 style="font-size:14px; margin-top:20px; color:var(--teal-700);">Section A: Drivers of Reinsurance Externalization & Capital Flight</h3>
+                <table class="matrix-table">
+                    <thead>
+                        <tr>
+                            <th class="statement-col">Analytical Metric Statement</th>
+                            <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>The heavy externalization of specialized risks is primarily caused by a critical domestic underwriting data deficit rather than a lack of baseline capital scale.</td>
+                            <td><input type="radio" name="q1" value="1" required></td>
+                            <td><input type="radio" name="q1" value="2"></td>
+                            <td><input type="radio" name="q1" value="3"></td>
+                            <td><input type="radio" name="q1" value="4"></td>
+                            <td><input type="radio" name="q1" value="5"></td>
+                        </tr>
+                        <tr>
+                            <td>Current local reinsurance treaty limitations force primary underwriters to rely aggressively on offshore facultative placement to safeguard solvency parameters.</td>
+                            <td><input type="radio" name="q2" value="1" required></td>
+                            <td><input type="radio" name="q2" value="2"></td>
+                            <td><input type="radio" name="q2" value="3"></td>
+                            <td><input type="radio" name="q2" value="4"></td>
+                            <td><input type="radio" name="q2" value="5"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 style="font-size:14px; margin-top:30px; color:var(--teal-700);">Section B: Institutional Feasibility of the National Risk Data Lake</h3>
+                <table class="matrix-table">
+                    <thead>
+                        <tr>
+                            <th class="statement-col">Analytical Metric Statement</th>
+                            <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Our institution would be highly willing to stream real-time, anonymized underwriting and claims metrics into an IPEC-mandated, secure centralized data lake.</td>
+                            <td><input type="radio" name="q3" value="1" required></td>
+                            <td><input type="radio" name="q3" value="2"></td>
+                            <td><input type="radio" name="q3" value="3"></td>
+                            <td><input type="radio" name="q3" value="4"></td>
+                            <td><input type="radio" name="q3" value="5"></td>
+                        </tr>
+                        <tr>
+                            <td>Eliminating data silos through a centralized hub would enable local reinsurers to sharpen tail-risk modeling and safely expand internal domestic retention limits.</td>
+                            <td><input type="radio" name="q4" value="1" required></td>
+                            <td><input type="radio" name="q4" value="2"></td>
+                            <td><input type="radio" name="q4" value="3"></td>
+                            <td><input type="radio" name="q4" value="4"></td>
+                            <td><input type="radio" name="q4" value="5"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section-card">
+                <div class="section-title">Part IV: Qualitative Narrative Insights</div>
+                
+                <div class="form-group">
+                    <label>From an operational standpoint, what do you consider the single greatest structural obstacle preventing local reinsurance pools from absorbing large, specialized risks within Zimbabwe?</label>
+                    <textarea name="qualitative_1" placeholder="Type your industry perspective here..."></textarea>
+                </div>
+            </div>
+
+            <div class="submit-container">
+                <button type="submit" class="btn-submit">Submit Survey Profile</button>
+            </div>
+
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('nexusSurvey').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Response successfully compiled! If configured to your backend storage loop (e.g., Google Sheets API), this data is pushed live instantly to the tracking link visible at the top of the interface.');
+        });
+    </script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
+</html>
+
+```
